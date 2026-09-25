@@ -287,6 +287,11 @@ Before publishing a new version:
 
 ## License
 
-No license is declared yet. The repository is public for distribution, but a
-license should be added before treating it as open source or granting broad
-reuse rights.
+This project is licensed under the MIT License.
+
+You may use, copy, modify, merge, publish, distribute, sublicense, and sell
+copies of the project, including for commercial purposes, provided that the
+copyright notice and permission notice are preserved in copies or substantial
+portions of the project.
+
+See [`LICENSE`](LICENSE) for the full terms.
