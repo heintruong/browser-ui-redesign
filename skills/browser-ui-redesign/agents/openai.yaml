@@ -1,0 +1,7 @@
+interface:
+  display_name: "Browser UI Redesign"
+  short_description: "Browser-verified UI/UX redesign workflow"
+  default_prompt: "Use $browser-ui-redesign to redesign and verify this web flow."
+
+policy:
+  allow_implicit_invocation: false

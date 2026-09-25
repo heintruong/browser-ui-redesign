@@ -1,0 +1,7 @@
+# Local-only files
+.DS_Store
+*.log
+
+# Browser/UI review artifacts
+.tmp/
+artifacts/

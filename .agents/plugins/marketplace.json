@@ -1,0 +1,20 @@
+{
+  "name": "browser-ui-redesign-marketplace",
+  "interface": {
+    "displayName": "Browser UI Redesign"
+  },
+  "plugins": [
+    {
+      "name": "browser-ui-redesign",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

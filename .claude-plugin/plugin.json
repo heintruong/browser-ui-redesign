@@ -1,0 +1,9 @@
+{
+  "name": "browser-ui-redesign",
+  "version": "0.1.0",
+  "description": "Browser-verified UI and UX redesign workflow.",
+  "author": {
+    "name": "Lucky Vibes"
+  },
+  "skills": "./skills/"
+}
