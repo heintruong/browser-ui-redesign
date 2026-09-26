@@ -1,14 +1,13 @@
 ---
-name: Browser UI Redesign
+name: browser-ui-redesign
 description: >
   Redesign and improve an existing website or web application by inspecting
   it in a real browser, applying Impeccable design guidance, and auditing
   the result with Vercel Web Design Guidelines. Use for UI/UX redesign,
   responsive fixes, visual polish, accessibility improvements, and
   browser-verified frontend changes.
-disable-model-invocation: true
 metadata:
-  opencode/autoinvoke: false
+  version: "0.1.1"
 ---
 
 # Browser UI Redesign
@@ -20,6 +19,40 @@ Before editing, verify that these skills are available in the current harness.
 If the harness supports explicit skill loading, load them. Otherwise follow
 their installed instructions directly. If one is unavailable, stop and report
 it; do not replace a missing skill with an improvised approximation.
+
+## Browser backend and recovery contract
+
+Use `browser-skill` and its `bsk` CLI for all live browser work in this
+workflow, including connection checks, inspection, interaction, and screenshots.
+Before the first browser command (including `bsk status`), read the installed
+`browser-skill` instructions and any applicable environment, launcher, recovery,
+and browser-profile references. Follow their required launcher and environment
+for every `bsk` command.
+
+Do not switch to Chrome DevTools MCP, another browser MCP, or another browser
+backend as a workaround, even if those tools are available. This also applies
+to delegated browser work. A launcher crash, timeout, or failed `bsk status`
+is not evidence that the browser is unavailable and does not authorize fallback.
+
+If a command fails:
+
+1. Retain the failed command and relevant error, excluding sensitive data.
+2. Follow the installed browser-skill's documented recovery for that failure,
+   then retry the failed preflight or session command using the documented
+   launcher and environment. Do not improvise installation or reset user
+   browser data. If recovery requires permission, obtain it first.
+3. If recovery is undocumented, cannot be completed, or the retry still fails,
+   stop the browser-dependent workflow and report the blocker, recovery tried,
+   and required next action. Mark pending browser checks `Not verified`; do not
+   proceed to redesign edits without a rendered baseline.
+
+For a requested named browser profile, run `bsk browsers --json`, verify the
+requested profile against the returned browser instance ID, and start the
+session with `bsk session start --browser <id> --json`. Never guess the ID or
+silently choose the default profile. If the profile is missing, follow the
+documented connection/recovery steps and list browsers again. If the mapping is
+still missing or ambiguous, report it and request the needed clarification.
+Retain the confirmed browser ID and session ID for subsequent commands.
 
 ## Inputs and safety
 
@@ -37,8 +70,9 @@ the user explicitly asks otherwise. Do not read or expose secrets, cookies, or
 tokens. Do not borrow an existing user browser tab. Use a new session-controlled
 tab. Do not commit screenshots or generated artifacts. Keep changes surgical.
 
-For the Lucky_vibes repository, treat `frontend/` and `official_website/` as
-separate frontends unless the user requests a cross-site visual system.
+Treat separate frontend applications as separate scopes unless the user requests
+a cross-site visual system. Infer missing inputs from the project when possible;
+ask only when ambiguity would materially change the requested work.
 
 ## Workflow
 
@@ -48,9 +82,14 @@ separate frontends unless the user requests a cross-site visual system.
    tokens.
 2. Start the documented development server only if it is not already running.
 3. Use the URL reported by the server.
-4. Verify BrowserSkill with `bsk --version`; if the browser is unavailable,
-   follow the browser-skill setup instructions.
-5. Start a session with `bsk session start --json` and retain the session ID.
+4. Apply the browser backend and recovery contract above. Verify the CLI with
+   `bsk --version` and the connection using the installed skill's documented
+   preflight. CLI availability alone does not establish browser connectivity.
+5. Resolve any requested profile with `bsk browsers --json` and start a new
+   session with `bsk session start --browser <id> --json`. If no profile was
+   requested, follow the installed skill's browser-selection rules and use
+   `bsk session start --json` only when the default browser is unambiguous.
+   Retain the session ID; apply documented recovery to any startup failure.
 
 ### 2. Capture a baseline
 

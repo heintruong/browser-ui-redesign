@@ -10,6 +10,12 @@ $ARGUMENTS
 Requirements:
 
 - Load `browser-skill`, `impeccable`, and `web-design-guidelines`.
+- Before any browser command, read browser-skill's applicable environment,
+  launcher, recovery, and profile instructions. Use only its `bsk` CLI.
+- On startup failure, follow documented recovery and retry; if still blocked,
+  report it. Never fall back to Chrome DevTools MCP or another browser backend.
+- For a named profile, resolve its instance ID with `bsk browsers --json` and
+  start the session with `bsk session start --browser <id> --json`.
 - Inspect the current implementation before editing.
 - Start or reuse the project's documented development server.
 - Use a new BrowserSkill session-controlled tab; do not borrow a user tab.
@@ -22,5 +28,5 @@ Requirements:
 - Run relevant lint, typecheck, build, and tests.
 - Always stop the browser session, including on failure.
 
-If the target URL, route, or user flow is missing or ambiguous, inspect the
-project and ask for confirmation before editing.
+If the target URL, route, or user flow is missing, inspect the project first.
+Ask for clarification only when ambiguity would materially change the work.

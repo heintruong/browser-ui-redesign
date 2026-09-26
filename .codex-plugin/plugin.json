@@ -1,9 +1,27 @@
 {
   "name": "browser-ui-redesign",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Browser-verified UI and UX redesign workflow.",
   "author": {
     "name": "Lucky Vibes"
   },
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "repository": "https://github.com/heintruong/browser-ui-redesign",
+  "homepage": "https://github.com/heintruong/browser-ui-redesign#readme",
+  "license": "MIT",
+  "interface": {
+    "displayName": "Browser UI Redesign",
+    "shortDescription": "Browser-verified UI/UX redesign",
+    "longDescription": "Inspect and improve a web interface with BrowserSkill, Impeccable, and Vercel Web Design Guidelines.",
+    "developerName": "Lucky Vibes",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/heintruong/browser-ui-redesign",
+    "defaultPrompt": [
+      "Use $browser-ui-redesign to improve and verify this web flow."
+    ]
+  }
 }
